@@ -19,6 +19,12 @@ public class Orders {
         orders.add(order);
     }
 
+    public int getTotalAmount() {
+        return orders.stream()
+                .mapToInt(Order::calculateAmount)
+                .sum();
+    }
+
     public List<OrderInfoResponse> createResponse() {
         return orders.stream()
                 .map(Order::createResponse)

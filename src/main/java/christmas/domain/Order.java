@@ -18,10 +18,12 @@ public class Order {
         this.quantity = quantity;
     }
 
-    private void validateQuantity(int quantity) {
-        if (quantity < MINIMUM_QUANTITY) {
-            throw new IllegalArgumentException(INVALID_ORDER.get());
-        }
+    public boolean isMenuTypeDrink() {
+        return menu.isMenuTypeDrink();
+    }
+
+    public int calculateAmount() {
+        return menu.getPrice() * quantity;
     }
 
     public OrderInfoResponse createResponse() {
