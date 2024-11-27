@@ -2,6 +2,8 @@ package christmas.domain;
 
 import static christmas.constant.ErrorMessage.INVALID_ORDER;
 
+import java.util.Objects;
+
 public class Order {
 
     private static final int MINIMUM_QUANTITY = 1;
@@ -19,5 +21,19 @@ public class Order {
         if (quantity < MINIMUM_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER.get());
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Order order = (Order) obj;
+        return menu == order.menu;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(menu);
     }
 }
