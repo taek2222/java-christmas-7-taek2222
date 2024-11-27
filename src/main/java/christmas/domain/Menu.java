@@ -42,4 +42,8 @@ public enum Menu {
                         new IllegalArgumentException(INVALID_ORDER.get())
                 );
     }
+
+    public String getName() {
+        return name;
+    }
 }

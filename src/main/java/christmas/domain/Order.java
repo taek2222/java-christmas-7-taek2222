@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.constant.ErrorMessage.INVALID_ORDER;
 
+import christmas.domain.dto.OrderInfoResponse;
 import java.util.Objects;
 
 public class Order {
@@ -21,6 +22,13 @@ public class Order {
         if (quantity < MINIMUM_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER.get());
         }
+    }
+
+    public OrderInfoResponse createResponse() {
+        return new OrderInfoResponse(
+                menu.getName(),
+                quantity
+        );
     }
 
     @Override

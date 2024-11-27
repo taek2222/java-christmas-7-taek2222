@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.constant.ErrorMessage.INVALID_ORDER;
 
+import christmas.domain.dto.OrderInfoResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,12 @@ public class Orders {
     public void addOrder(Order order) {
         validateDuplication(order);
         orders.add(order);
+    }
+
+    public List<OrderInfoResponse> createResponse() {
+        return orders.stream()
+                .map(Order::createResponse)
+                .toList();
     }
 
     private void validateDuplication(Order newOrder) {
