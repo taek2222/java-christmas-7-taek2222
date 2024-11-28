@@ -33,6 +33,10 @@ public class Order {
         );
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -45,5 +49,11 @@ public class Order {
     @Override
     public int hashCode() {
         return Objects.hashCode(menu);
+    }
+
+    private void validateQuantity(int quantity) {
+        if (quantity < MINIMUM_QUANTITY) {
+            throw new IllegalArgumentException(INVALID_ORDER.get());
+        }
     }
 }

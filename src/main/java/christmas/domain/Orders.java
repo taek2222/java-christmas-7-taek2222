@@ -31,6 +31,20 @@ public class Orders {
                 .toList();
     }
 
+    public int calculateTotalQuantity() {
+        return orders.stream()
+                .mapToInt(Order::getQuantity)
+                .sum();
+    }
+
+    public boolean isOnlyDrink() {
+        long count = orders.stream()
+                .filter(Order::isMenuTypeDrink)
+                .count();
+
+        return orders.size() == count;
+    }
+
     private void validateDuplication(Order newOrder) {
         orders.stream()
                 .filter(newOrder::equals)
