@@ -18,8 +18,11 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public boolean isMenuTypeDrink(MenuType menuType) {
-        return menu.isEqualsMenuType(menuType);
+    public int getQuantityByMenuType(MenuType menuType) {
+        if (menu.isSameMenuType(menuType)) {
+            return quantity;
+        }
+        return 0;
     }
 
     public int calculateAmount() {
@@ -27,10 +30,7 @@ public class Order {
     }
 
     public OrderInfoResponse createResponse() {
-        return new OrderInfoResponse(
-                menu.getName(),
-                quantity
-        );
+        return new OrderInfoResponse(menu.getName(), quantity);
     }
 
     public int getQuantity() {
@@ -39,8 +39,12 @@ public class Order {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
         Order order = (Order) obj;
         return menu == order.menu;
