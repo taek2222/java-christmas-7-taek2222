@@ -9,8 +9,8 @@ public class Order {
 
     private static final int MINIMUM_QUANTITY = 1;
 
-    private Menu menu;
-    private int quantity;
+    private final Menu menu;
+    private final int quantity;
 
     public Order(Menu menu, int quantity) {
         validateQuantity(quantity);
@@ -18,8 +18,8 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public boolean isMenuTypeDrink() {
-        return menu.isMenuTypeDrink();
+    public boolean isMenuTypeDrink(MenuType menuType) {
+        return menu.isEqualsMenuType(menuType);
     }
 
     public int calculateAmount() {

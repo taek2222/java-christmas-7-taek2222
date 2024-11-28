@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.constant.ErrorMessage.INVALID_ORDER;
+import static christmas.domain.MenuType.DRINK;
 
 import christmas.domain.dto.OrderInfoResponse;
 import java.util.ArrayList;
@@ -38,11 +39,13 @@ public class Orders {
     }
 
     public boolean isOnlyDrink() {
-        long count = orders.stream()
-                .filter(Order::isMenuTypeDrink)
-                .count();
+        return orders.size() == countMenuType(DRINK);
+    }
 
-        return orders.size() == count;
+    public int countMenuType(MenuType menuType) {
+        return (int) orders.stream()
+                .filter(order -> order.isMenuTypeDrink(menuType))
+                .count();
     }
 
     private void validateDuplication(Order newOrder) {

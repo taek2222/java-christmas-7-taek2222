@@ -34,10 +34,6 @@ public enum Menu {
         this.menuType = menuType;
     }
 
-    public boolean isMenuTypeDrink() {
-        return this.menuType == DRINK;
-    }
-
     public static Menu findByName(String name) {
         return Arrays.stream(values())
                 .filter(menu -> menu.name.equals(name))
@@ -45,6 +41,10 @@ public enum Menu {
                 .orElseThrow(() ->
                         new IllegalArgumentException(INVALID_ORDER.get())
                 );
+    }
+
+    public boolean isEqualsMenuType(MenuType menuType) {
+        return this.menuType == menuType;
     }
 
     public String getName() {
