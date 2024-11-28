@@ -26,12 +26,12 @@ public enum Menu {
 
     private final String name;
     private final int price;
-    private final MenuType menuType;
+    private final MenuType type;
 
-    Menu(String name, int price, MenuType menuType) {
+    Menu(String name, int price, MenuType type) {
         this.name = name;
         this.price = price;
-        this.menuType = menuType;
+        this.type = type;
     }
 
     public static Menu findByName(String name) {
@@ -43,8 +43,8 @@ public enum Menu {
                 );
     }
 
-    public boolean isEqualsMenuType(MenuType menuType) {
-        return this.menuType == menuType;
+    public boolean isSameMenuType(MenuType type) {
+        return this.type == type;
     }
 
     public String getName() {
