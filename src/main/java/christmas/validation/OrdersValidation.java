@@ -21,7 +21,7 @@ public class OrdersValidation {
     }
 
     private static void validateTotalQuantity(Orders orders) {
-        int quantity = orders.calculateTotalQuantity();
+        int quantity = orders.calculateTotalOrderQuantity();
 
         if (quantity > MAXIMUM_ORDER_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER_QUANTITY.get(MAXIMUM_ORDER_QUANTITY));

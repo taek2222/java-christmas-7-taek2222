@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Orders {
 
-    private List<Order> orders;
+    private final List<Order> orders;
 
     public Orders() {
         this.orders = new ArrayList<>();
@@ -32,20 +32,20 @@ public class Orders {
                 .toList();
     }
 
-    public int calculateTotalQuantity() {
+    public boolean isOnlyDrink() {
+        return calculateTotalOrderQuantity() == calculateQuantityByMenuType(DRINK);
+    }
+
+    public int calculateTotalOrderQuantity() {
         return orders.stream()
                 .mapToInt(Order::getQuantity)
                 .sum();
     }
 
-    public boolean isOnlyDrink() {
-        return orders.size() == countMenuType(DRINK);
-    }
-
-    public int countMenuType(MenuType menuType) {
-        return (int) orders.stream()
-                .filter(order -> order.isMenuTypeDrink(menuType))
-                .count();
+    public int calculateQuantityByMenuType(MenuType menuType) {
+        return orders.stream()
+                .mapToInt(order -> order.getQuantityByMenuType(menuType))
+                .sum();
     }
 
     private void validateDuplication(Order newOrder) {
