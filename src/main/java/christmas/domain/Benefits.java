@@ -11,11 +11,13 @@ public class Benefits {
     private final int DDay;
     private final int weekdays;
     private final int weekend;
+    private final int special;
 
     public Benefits(OrderDate orderDate, Orders orders) {
         this.DDay = calculateDDayBenefit(orderDate);
         this.weekdays = calculateWeekdaysBenefit(orderDate, orders);
         this.weekend = calculateWeekendBenefit(orderDate, orders);
+        this.special = calculateSpecialBenefit(orderDate);
     }
 
     private int calculateDDayBenefit(OrderDate orderDate) {
@@ -39,5 +41,11 @@ public class Benefits {
             return 0;
 
         return orders.countMenuType(MAIN) * 2_023;
+    }
+
+    private int calculateSpecialBenefit(OrderDate orderDate) {
+        if (orderDate.isSpecialDay())
+            return 1_000;
+        return 0;
     }
 }

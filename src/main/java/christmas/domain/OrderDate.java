@@ -16,8 +16,12 @@ public class OrderDate {
 
     public OrderDate(int date) {
         validateIsChristmasDate(date);
-        this.date = LocalDate.of(2024, 12, date);
+        this.date = LocalDate.of(2023, 12, date);
         this.dayOfWeek = this.date.getDayOfWeek();
+    }
+
+    public boolean isSpecialDay() {
+        return dayOfWeek.getValue() == 7 || date.getDayOfMonth() == CHRISTMAS_DAY;
     }
 
     public boolean isWeekend() {
