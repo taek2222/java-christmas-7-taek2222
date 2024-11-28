@@ -2,23 +2,35 @@ package christmas.domain;
 
 import static christmas.constant.ErrorMessage.INVALID_DATE;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 public class OrderDate {
 
     private static final int MIN_DATE = 1;
     private static final int MAX_DATE = 31;
     private static final int CHRISTMAS_DAY = 25;
 
-    private final int date;
+    private final LocalDate date;
+    private final DayOfWeek dayOfWeek;
 
     public OrderDate(int date) {
         validateIsChristmasDate(date);
-        this.date = date;
+        this.date = LocalDate.of(2024, 12, date);
+        this.dayOfWeek = this.date.getDayOfWeek();
+    }
+
+    public boolean isWeekend() {
+        return dayOfWeek.getValue() == 6 || dayOfWeek.getValue() == 5;
     }
 
     public Integer calculateDDay() {
-        if (date > CHRISTMAS_DAY)
+        int dayOfMonth = date.getDayOfMonth();
+        if (dayOfMonth > CHRISTMAS_DAY) {
             return null;
-        return date;
+        }
+
+        return dayOfMonth - 1;
     }
 
     @Override
