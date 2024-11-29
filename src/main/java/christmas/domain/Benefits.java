@@ -16,6 +16,12 @@ public class Benefits {
 
     public int getTotalAmount() {
         return benefits.stream()
+                .mapToInt(Benefit::getAmount)
+                .sum();
+    }
+
+    public int getNonPresentationTotalAmount() {
+        return benefits.stream()
                 .filter(Benefit::isNotPresentation)
                 .mapToInt(Benefit::getAmount)
                 .sum();
