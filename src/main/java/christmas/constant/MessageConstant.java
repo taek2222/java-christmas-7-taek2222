@@ -10,6 +10,7 @@ public enum MessageConstant {
     BENEFIT_CONTENTS_HEADER("<혜택 내역>"),
     BENEFITS_AMOUNT_HEADER("<총혜택 금액>"),
     AFTER_DISCOUNT_AMOUNT_HEADER("<할인 후 예상 결제 금액>"),
+    EVENT_BADGE("<12월 이벤트 배지>"),
     ORDER_DETAILS("%s %d개"),
     AMOUNT("%s원"),
     MINUS_AMOUNT("-" + AMOUNT.get()),

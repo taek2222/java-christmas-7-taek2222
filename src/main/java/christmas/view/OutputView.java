@@ -6,6 +6,7 @@ import static christmas.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT_HEADER;
 import static christmas.constant.MessageConstant.BENEFITS_AMOUNT_HEADER;
 import static christmas.constant.MessageConstant.BENEFIT_CONTENTS_HEADER;
 import static christmas.constant.MessageConstant.BENEFIT_DETAILS;
+import static christmas.constant.MessageConstant.EVENT_BADGE;
 import static christmas.constant.MessageConstant.EVENT_NOTICE;
 import static christmas.constant.MessageConstant.MINUS_AMOUNT;
 import static christmas.constant.MessageConstant.NEW_LINE;
@@ -88,6 +89,17 @@ public class OutputView {
 
         String formattedAmount = PRICE_FORMAT.format(amount);
         System.out.println(AMOUNT.get(formattedAmount));
+    }
+
+    public void printEventBadge(String name) {
+        printHeader(EVENT_BADGE);
+
+        if (name == null) {
+            System.out.println(NO_CONTENT.get());
+            return;
+        }
+
+        System.out.println(name);
     }
 
     private void printBenefitDetail(BenefitInfoResponse response) {
