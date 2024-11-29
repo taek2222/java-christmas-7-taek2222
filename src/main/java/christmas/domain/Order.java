@@ -18,6 +18,10 @@ public class Order {
         this.quantity = quantity;
     }
 
+    public Order(Menu menu) {
+        this(menu, 1);
+    }
+
     public int getQuantityByMenuType(MenuType menuType) {
         if (menu.isSameMenuType(menuType)) {
             return quantity;

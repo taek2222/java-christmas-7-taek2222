@@ -56,7 +56,7 @@ public class OutputView {
     public void printBenefitContents(List<BenefitInfoResponse> responses) {
         printHeader(BENEFIT_CONTENTS_HEADER);
 
-        if (responses == null) {
+        if (responses.isEmpty()) {
             System.out.println(NO_CONTENT.get());
             return;
         }
