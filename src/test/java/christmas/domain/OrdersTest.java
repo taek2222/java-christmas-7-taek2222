@@ -1,75 +1,101 @@
 package christmas.domain;
 
+import static christmas.domain.Menu.T_BONE_STEAK;
+import static christmas.domain.Menu.ZERO_COLA;
 import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.domain.dto.OrderDetailResponse;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class OrderTest {
+class OrdersTest {
+
+    private Orders orders;
+
+    @BeforeEach
+    void setUp() {
+        orders = new Orders();
+    }
 
     @Test
-    void 수량이_최소값_미만일_경우_예외를_던진다() {
+    void 주문을_추가한다() {
         // given
-        Menu menu = Menu.T_BONE_STEAK;
+        Order order = new Order(T_BONE_STEAK, 2);
+
+        // when
+        orders.addOrder(order);
+
+        // then
+        assertThat(orders.calculateTotalOrderQuantity()).isEqualTo(2);
+    }
+
+    @Test
+    void 중복된_주문을_추가할_때_예외를_던진다() {
+        // given
+        Order order = new Order(T_BONE_STEAK, 2);
+        orders.addOrder(order);
 
         // when & then
-        assertThatThrownBy(() -> new Order(menu, 0))
+        assertThatThrownBy(() -> orders.addOrder(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ORDER.get());
     }
 
     @Test
-    void 메뉴_타입에_따라_수량을_반환한다() {
+    void 총_금액을_계산한다() {
         // given
-        Menu menu = Menu.T_BONE_STEAK;
-        Order order = new Order(menu, 3);
+        orders.addOrder(new Order(T_BONE_STEAK, 2));
+        orders.addOrder(new Order(ZERO_COLA, 3));
 
         // when
-        int quantity = order.getQuantityByMenuType(MenuType.MAIN);
+        int totalAmount = orders.getTotalAmount();
 
         // then
-        assertThat(quantity).isEqualTo(3);
+        assertThat(totalAmount).isEqualTo(T_BONE_STEAK.getPrice() * 2 + ZERO_COLA.getPrice() * 3);
     }
 
     @Test
-    void 메뉴_타입이_다르면_수량을_0으로_반환한다() {
+    void 주문_응답_리스트를_생성한다() {
         // given
-        Menu menu = Menu.T_BONE_STEAK;
-        Order order = new Order(menu, 3);
+        orders.addOrder(new Order(T_BONE_STEAK, 2));
+        orders.addOrder(new Order(ZERO_COLA, 3));
 
         // when
-        int quantity = order.getQuantityByMenuType(MenuType.DESSERT);
+        List<OrderDetailResponse> responses = orders.createResponse();
 
         // then
-        assertThat(quantity).isEqualTo(0);
+        assertThat(responses).hasSize(2);
+        assertThat(responses.get(0).name()).isEqualTo(T_BONE_STEAK.getName());
+        assertThat(responses.get(0).quantity()).isEqualTo(2);
+        assertThat(responses.get(1).name()).isEqualTo(ZERO_COLA.getName());
+        assertThat(responses.get(1).quantity()).isEqualTo(3);
     }
 
     @Test
-    void 주문_금액을_계산한다() {
+    void 음료만_주문했는지_확인한다() {
         // given
-        Menu menu = Menu.T_BONE_STEAK;
-        Order order = new Order(menu, 2);
+        orders.addOrder(new Order(ZERO_COLA, 3));
 
         // when
-        int amount = order.calculateAmount();
+        boolean isOnlyDrink = orders.isOnlyDrink();
 
         // then
-        assertThat(amount).isEqualTo(menu.getPrice() * 2);
+        assertThat(isOnlyDrink).isTrue();
     }
 
     @Test
-    void 주문_응답_객체를_생성한다() {
+    void 음료만_주문하지_않았는지_확인한다() {
         // given
-        Menu menu = Menu.T_BONE_STEAK;
-        Order order = new Order(menu, 2);
+        orders.addOrder(new Order(T_BONE_STEAK, 2));
+        orders.addOrder(new Order(ZERO_COLA, 3));
 
         // when
-        OrderDetailResponse response = order.createResponse();
+        boolean isOnlyDrink = orders.isOnlyDrink();
 
         // then
-        assertThat(response.name()).isEqualTo(menu.getName());
-        assertThat(response.quantity()).isEqualTo(2);
+        assertThat(isOnlyDrink).isFalse();
     }
 }
