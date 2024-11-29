@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 import static christmas.domain.MenuType.DRINK;
+import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 
 import christmas.domain.dto.OrderDetailResponse;
 import java.util.ArrayList;

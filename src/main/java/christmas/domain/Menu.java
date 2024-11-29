@@ -1,10 +1,10 @@
 package christmas.domain;
 
-import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 import static christmas.domain.MenuType.APPETIZER;
 import static christmas.domain.MenuType.DESSERT;
 import static christmas.domain.MenuType.DRINK;
 import static christmas.domain.MenuType.MAIN;
+import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 
 import java.util.Arrays;
 
@@ -22,7 +22,8 @@ public enum Menu {
 
     ZERO_COLA("제로콜라", 3_000, DRINK),
     RED_WINE("레드와인", 60_000, DRINK),
-    CHAMPAGNE("샴페인", 25_000, DRINK);
+    CHAMPAGNE("샴페인", 25_000, DRINK)
+    ;
 
     private final String name;
     private final int price;

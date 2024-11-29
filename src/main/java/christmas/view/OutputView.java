@@ -16,9 +16,9 @@ import static christmas.global.constant.MessageConstant.ORDER_MENU_HEADER;
 import static christmas.global.constant.MessageConstant.PRESENTATION_HEADER;
 import static christmas.global.constant.MessageConstant.WELCOME;
 
-import christmas.global.constant.MessageConstant;
 import christmas.domain.dto.BenefitDetailResponse;
 import christmas.domain.dto.OrderDetailResponse;
+import christmas.global.constant.MessageConstant;
 import java.text.DecimalFormat;
 import java.util.List;
 
