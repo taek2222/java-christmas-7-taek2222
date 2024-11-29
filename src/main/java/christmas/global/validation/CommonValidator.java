@@ -1,6 +1,6 @@
-package christmas.validation;
+package christmas.global.validation;
 
-import static christmas.constant.ErrorMessage.INVALID_NUMERIC;
+import static christmas.global.constant.ErrorMessage.INVALID_NUMERIC;
 
 public class CommonValidator {
 

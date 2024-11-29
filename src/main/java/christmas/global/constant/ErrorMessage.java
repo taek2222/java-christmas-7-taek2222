@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.global.constant;
 
 public enum ErrorMessage {
     INVALID_NUMERIC("숫자만 입력 가능합니다. 잘못된 입력 : (%s) "),

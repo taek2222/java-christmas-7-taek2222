@@ -1,22 +1,22 @@
 package christmas.view;
 
-import static christmas.constant.MessageConstant.AFTER_DISCOUNT_AMOUNT_HEADER;
-import static christmas.constant.MessageConstant.AMOUNT;
-import static christmas.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT_HEADER;
-import static christmas.constant.MessageConstant.BENEFITS_AMOUNT_HEADER;
-import static christmas.constant.MessageConstant.BENEFIT_CONTENTS_HEADER;
-import static christmas.constant.MessageConstant.BENEFIT_DETAILS;
-import static christmas.constant.MessageConstant.EVENT_BADGE;
-import static christmas.constant.MessageConstant.EVENT_NOTICE;
-import static christmas.constant.MessageConstant.MINUS_AMOUNT;
-import static christmas.constant.MessageConstant.NEW_LINE;
-import static christmas.constant.MessageConstant.NO_CONTENT;
-import static christmas.constant.MessageConstant.ORDER_DETAILS;
-import static christmas.constant.MessageConstant.ORDER_MENU_HEADER;
-import static christmas.constant.MessageConstant.PRESENTATION_HEADER;
-import static christmas.constant.MessageConstant.WELCOME;
+import static christmas.global.constant.MessageConstant.AFTER_DISCOUNT_AMOUNT_HEADER;
+import static christmas.global.constant.MessageConstant.AMOUNT;
+import static christmas.global.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT_HEADER;
+import static christmas.global.constant.MessageConstant.BENEFITS_AMOUNT_HEADER;
+import static christmas.global.constant.MessageConstant.BENEFIT_CONTENTS_HEADER;
+import static christmas.global.constant.MessageConstant.BENEFIT_DETAILS;
+import static christmas.global.constant.MessageConstant.EVENT_BADGE;
+import static christmas.global.constant.MessageConstant.EVENT_NOTICE;
+import static christmas.global.constant.MessageConstant.MINUS_AMOUNT;
+import static christmas.global.constant.MessageConstant.NEW_LINE;
+import static christmas.global.constant.MessageConstant.NO_CONTENT;
+import static christmas.global.constant.MessageConstant.ORDER_DETAILS;
+import static christmas.global.constant.MessageConstant.ORDER_MENU_HEADER;
+import static christmas.global.constant.MessageConstant.PRESENTATION_HEADER;
+import static christmas.global.constant.MessageConstant.WELCOME;
 
-import christmas.constant.MessageConstant;
+import christmas.global.constant.MessageConstant;
 import christmas.domain.dto.BenefitInfoResponse;
 import christmas.domain.dto.OrderInfoResponse;
 import java.text.DecimalFormat;

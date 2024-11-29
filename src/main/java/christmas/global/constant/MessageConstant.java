@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.global.constant;
 
 public enum MessageConstant {
     // Output

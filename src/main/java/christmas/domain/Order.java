@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.constant.ErrorMessage.INVALID_ORDER;
+import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 
 import christmas.domain.dto.OrderInfoResponse;
 import java.util.Objects;

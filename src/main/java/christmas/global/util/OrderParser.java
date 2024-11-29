@@ -1,6 +1,6 @@
-package christmas.util;
+package christmas.global.util;
 
-import static christmas.constant.ErrorMessage.INVALID_ORDER;
+import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 
 import christmas.domain.Menu;
 import christmas.domain.Order;

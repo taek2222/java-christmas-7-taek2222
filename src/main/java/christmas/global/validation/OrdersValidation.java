@@ -1,7 +1,7 @@
-package christmas.validation;
+package christmas.global.validation;
 
-import static christmas.constant.ErrorMessage.INVALID_ONLY_DRINK;
-import static christmas.constant.ErrorMessage.INVALID_ORDER_QUANTITY;
+import static christmas.global.constant.ErrorMessage.INVALID_ONLY_DRINK;
+import static christmas.global.constant.ErrorMessage.INVALID_ORDER_QUANTITY;
 
 import christmas.domain.Orders;
 

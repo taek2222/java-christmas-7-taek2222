@@ -1,9 +1,9 @@
 package christmas.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static christmas.constant.MessageConstant.ORDER;
-import static christmas.constant.MessageConstant.VISIT_DATE;
-import static christmas.validation.CommonValidator.validateIsNumeric;
+import static christmas.global.constant.MessageConstant.ORDER;
+import static christmas.global.constant.MessageConstant.VISIT_DATE;
+import static christmas.global.validation.CommonValidator.validateIsNumeric;
 
 public class InputView {
 
