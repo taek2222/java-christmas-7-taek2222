@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public enum Badge {
     STAR("별", 5_000),
     TREE("트리", 10_000),
@@ -8,21 +10,17 @@ public enum Badge {
     private final String name;
     private final int threshold;
 
-    Badge(String name, int threshold) {
+    Badge(final String name, final int threshold) {
         this.name = name;
         this.threshold = threshold;
     }
 
-    public static String findBadgeByAmount(int totalBenefit) {
-        if (totalBenefit >= SANTA.threshold) {
-            return SANTA.name;
-        }
-        if (totalBenefit >= TREE.threshold) {
-            return TREE.name;
-        }
-        if (totalBenefit >= STAR.threshold) {
-            return STAR.name;
-        }
-        return null;
+    public static String findBadgeByAmount(final int totalBenefit) {
+        return Arrays.stream(values())
+                .sorted((b1, b2) -> Integer.compare(b2.threshold, b1.threshold))
+                .filter(badge -> totalBenefit >= badge.threshold)
+                .map(badge -> badge.name)
+                .findFirst()
+                .orElse(null);
     }
 }
