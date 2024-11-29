@@ -28,11 +28,16 @@ public class BenefitService {
     private static final int GIFT_EVENT_THRESHOLD = 120_000;
     private static final int SPECIAL_AMOUNT = 1_000;
     private static final Menu PRESENTATION_MENU = CHAMPAGNE;
+    private static final int ORDER_AMOUNT_THRESHOLD = 10_000;
 
     private List<Benefit> benefits;
 
     public Benefits generateBenefits(OrderDate orderDate, Orders orders) {
         benefits = new ArrayList<>();
+
+        if (orders.getTotalAmount() < ORDER_AMOUNT_THRESHOLD) {
+            return new Benefits(benefits, null);
+        }
 
         applyDDayBenefit(orderDate);
         applyWeekdaysBenefit(orderDate, orders);
