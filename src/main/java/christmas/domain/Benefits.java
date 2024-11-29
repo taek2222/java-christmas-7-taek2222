@@ -9,7 +9,7 @@ public class Benefits {
     private final List<Benefit> benefits;
     private final Order presentation;
 
-    public Benefits(List<Benefit> benefits, Order presentation) {
+    public Benefits(final List<Benefit> benefits, final Order presentation) {
         this.benefits = benefits;
         this.presentation = presentation;
     }
