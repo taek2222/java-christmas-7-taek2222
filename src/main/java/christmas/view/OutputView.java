@@ -1,13 +1,19 @@
 package christmas.view;
 
-import static christmas.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT;
+import static christmas.constant.MessageConstant.AMOUNT;
 import static christmas.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT_HEADER;
+import static christmas.constant.MessageConstant.BENEFIT_CONTENTS_HEADER;
+import static christmas.constant.MessageConstant.BENEFIT_DETAILS;
 import static christmas.constant.MessageConstant.EVENT_NOTICE;
 import static christmas.constant.MessageConstant.NEW_LINE;
-import static christmas.constant.MessageConstant.ORDER_MENU;
+import static christmas.constant.MessageConstant.NO_CONTENT;
+import static christmas.constant.MessageConstant.ORDER_DETAILS;
 import static christmas.constant.MessageConstant.ORDER_MENU_HEADER;
+import static christmas.constant.MessageConstant.PRESENTATION_HEADER;
 import static christmas.constant.MessageConstant.WELCOME;
 
+import christmas.constant.MessageConstant;
+import christmas.domain.dto.BenefitInfoResponse;
 import christmas.domain.dto.OrderInfoResponse;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -27,19 +33,49 @@ public class OutputView {
 
     public void printOrdersMenu(List<OrderInfoResponse> orderResponses) {
         System.out.println(ORDER_MENU_HEADER.get());
-        orderResponses.forEach(this::printOrderMenu);
+        orderResponses.forEach(this::printOrderDetail);
     }
 
     public void printBeforeDiscountAmount(int amount) {
-        System.out.printf(NEW_LINE.get());
-        System.out.println(BEFORE_DISCOUNT_AMOUNT_HEADER.get());
-        System.out.printf(BEFORE_DISCOUNT_AMOUNT.get(PRICE_FORMAT.format(amount)));
+        String formattedAmount = PRICE_FORMAT.format(amount);
+
+        printHeader(BEFORE_DISCOUNT_AMOUNT_HEADER);
+        System.out.println(AMOUNT.get(formattedAmount));
     }
 
-    private void printOrderMenu(OrderInfoResponse orderResponse) {
-        System.out.println(ORDER_MENU.get(
-                orderResponse.name(),
-                orderResponse.quantity()
-        ));
+    public void printPresentationMenu(OrderInfoResponse response) {
+        printHeader(PRESENTATION_HEADER);
+
+        if (response == null) {
+            System.out.println(NO_CONTENT.get());
+            return;
+        }
+        printOrderDetail(response);
+    }
+
+    public void printBenefitContents(List<BenefitInfoResponse> responses) {
+        printHeader(BENEFIT_CONTENTS_HEADER);
+
+        if (responses == null) {
+            System.out.println(NO_CONTENT.get());
+            return;
+        }
+        responses.forEach(this::printBenefitDetail);
+    }
+
+    private void printBenefitDetail(BenefitInfoResponse response) {
+        String formattedAmount = PRICE_FORMAT.format(response.amount());
+
+        System.out.printf(BENEFIT_DETAILS.get(response.name(), formattedAmount));
+        System.out.printf(NEW_LINE.get());
+    }
+
+    private void printHeader(MessageConstant benefitContentsHeader) {
+        System.out.printf(NEW_LINE.get());
+        System.out.println(benefitContentsHeader.get());
+    }
+
+    private void printOrderDetail(OrderInfoResponse orderResponse) {
+        System.out.println(ORDER_DETAILS.get(orderResponse.name(), orderResponse.quantity()));
     }
 }
