@@ -1,7 +1,7 @@
 package christmas.domain.dto;
 
-public record BenefitInfoResponse(
+public record OrderDetailResponse(
         String name,
-        int amount
+        int quantity
 ) {
 }

@@ -2,7 +2,7 @@ package christmas.domain;
 
 import static christmas.domain.BenefitType.PRESENTATION;
 
-import christmas.domain.dto.BenefitInfoResponse;
+import christmas.domain.dto.BenefitDetailResponse;
 
 public class Benefit {
 
@@ -18,8 +18,8 @@ public class Benefit {
         return !type.equals(PRESENTATION);
     }
 
-    public BenefitInfoResponse createResponse() {
-        return new BenefitInfoResponse(type.getName(), amount);
+    public BenefitDetailResponse createResponse() {
+        return new BenefitDetailResponse(type.getName(), amount);
     }
 
     public int getAmount() {

@@ -3,7 +3,7 @@ package christmas.domain;
 import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 import static christmas.domain.MenuType.DRINK;
 
-import christmas.domain.dto.OrderInfoResponse;
+import christmas.domain.dto.OrderDetailResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class Orders {
                 .sum();
     }
 
-    public List<OrderInfoResponse> createResponse() {
+    public List<OrderDetailResponse> createResponse() {
         return orders.stream()
                 .map(Order::createResponse)
                 .toList();

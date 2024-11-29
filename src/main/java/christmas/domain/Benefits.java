@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.dto.BenefitInfoResponse;
-import christmas.domain.dto.OrderInfoResponse;
+import christmas.domain.dto.BenefitDetailResponse;
+import christmas.domain.dto.OrderDetailResponse;
 import java.util.List;
 
 public class Benefits {
@@ -27,14 +27,14 @@ public class Benefits {
                 .sum();
     }
 
-    public OrderInfoResponse getPresentationResponse() {
+    public OrderDetailResponse getPresentationResponse() {
         if (presentation == null) {
             return null;
         }
         return presentation.createResponse();
     }
 
-    public List<BenefitInfoResponse> getBenefitResponses() {
+    public List<BenefitDetailResponse> getBenefitResponses() {
         return benefits.stream()
                 .map(Benefit::createResponse)
                 .toList();

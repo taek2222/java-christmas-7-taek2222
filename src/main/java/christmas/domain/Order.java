@@ -2,7 +2,7 @@ package christmas.domain;
 
 import static christmas.global.constant.ErrorMessage.INVALID_ORDER;
 
-import christmas.domain.dto.OrderInfoResponse;
+import christmas.domain.dto.OrderDetailResponse;
 import java.util.Objects;
 
 public class Order {
@@ -33,8 +33,8 @@ public class Order {
         return menu.getPrice() * quantity;
     }
 
-    public OrderInfoResponse createResponse() {
-        return new OrderInfoResponse(menu.getName(), quantity);
+    public OrderDetailResponse createResponse() {
+        return new OrderDetailResponse(menu.getName(), quantity);
     }
 
     public int getQuantity() {

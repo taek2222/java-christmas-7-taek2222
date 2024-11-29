@@ -5,8 +5,8 @@ import static christmas.domain.Badge.findBadgeByAmount;
 import christmas.domain.Benefits;
 import christmas.domain.OrderDate;
 import christmas.domain.Orders;
-import christmas.domain.dto.BenefitInfoResponse;
-import christmas.domain.dto.OrderInfoResponse;
+import christmas.domain.dto.BenefitDetailResponse;
+import christmas.domain.dto.OrderDetailResponse;
 import christmas.service.BenefitService;
 import christmas.global.util.OrderParser;
 import christmas.global.validation.OrdersValidation;
@@ -84,12 +84,12 @@ public class ChristmasController {
     }
 
     private void displayBenefitContents(Benefits benefits) {
-        List<BenefitInfoResponse> benefit = benefits.getBenefitResponses();
+        List<BenefitDetailResponse> benefit = benefits.getBenefitResponses();
         outputView.printBenefitContents(benefit);
     }
 
     private void displayPresentationMenu(Benefits benefits) {
-        OrderInfoResponse response = benefits.getPresentationResponse();
+        OrderDetailResponse response = benefits.getPresentationResponse();
         outputView.printPresentationMenu(response);
     }
 

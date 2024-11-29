@@ -17,8 +17,8 @@ import static christmas.global.constant.MessageConstant.PRESENTATION_HEADER;
 import static christmas.global.constant.MessageConstant.WELCOME;
 
 import christmas.global.constant.MessageConstant;
-import christmas.domain.dto.BenefitInfoResponse;
-import christmas.domain.dto.OrderInfoResponse;
+import christmas.domain.dto.BenefitDetailResponse;
+import christmas.domain.dto.OrderDetailResponse;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class OutputView {
         System.out.println(NEW_LINE.get());
     }
 
-    public void printOrdersMenu(List<OrderInfoResponse> orderResponses) {
+    public void printOrdersMenu(List<OrderDetailResponse> orderResponses) {
         System.out.println(ORDER_MENU_HEADER.get());
         orderResponses.forEach(this::printOrderDetail);
     }
@@ -47,7 +47,7 @@ public class OutputView {
         System.out.println(AMOUNT.get(formattedAmount));
     }
 
-    public void printPresentationMenu(OrderInfoResponse response) {
+    public void printPresentationMenu(OrderDetailResponse response) {
         printHeader(PRESENTATION_HEADER);
 
         if (response == null) {
@@ -57,7 +57,7 @@ public class OutputView {
         printOrderDetail(response);
     }
 
-    public void printBenefitContents(List<BenefitInfoResponse> responses) {
+    public void printBenefitContents(List<BenefitDetailResponse> responses) {
         printHeader(BENEFIT_CONTENTS_HEADER);
 
         if (responses.isEmpty()) {
@@ -102,7 +102,7 @@ public class OutputView {
         System.out.println(name);
     }
 
-    private void printBenefitDetail(BenefitInfoResponse response) {
+    private void printBenefitDetail(BenefitDetailResponse response) {
         String formattedAmount = PRICE_FORMAT.format(response.amount());
 
         System.out.printf(BENEFIT_DETAILS.get(response.name(), formattedAmount));
@@ -114,7 +114,7 @@ public class OutputView {
         System.out.println(benefitContentsHeader.get());
     }
 
-    private void printOrderDetail(OrderInfoResponse orderResponse) {
+    private void printOrderDetail(OrderDetailResponse orderResponse) {
         System.out.println(ORDER_DETAILS.get(orderResponse.name(), orderResponse.quantity()));
     }
 }
