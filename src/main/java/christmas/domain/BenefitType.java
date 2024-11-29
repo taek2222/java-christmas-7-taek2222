@@ -5,7 +5,7 @@ public enum BenefitType {
     WEEKDAYS("평일 할인"),
     WEEKEND("주말 할인"),
     SPECIAL("스페셜 할인"),
-    PRESENTATION("증정 이벤트 할인")
+    PRESENTATION("증정 이벤트")
     ;
 
     private final String name;

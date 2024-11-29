@@ -39,7 +39,7 @@ public class OrderDate {
 
     @Override
     public String toString() {
-        return String.valueOf(date);
+        return String.valueOf(date.getDayOfMonth());
     }
 
     private static void validateIsChristmasDate(int date) {
