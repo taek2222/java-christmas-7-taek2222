@@ -83,7 +83,7 @@ public class BenefitService {
     }
 
     private void addBenefit(BenefitType benefitType, int amount) {
-        Benefit newBenefit = new Benefit(benefitType.getName(), amount);
+        Benefit newBenefit = new Benefit(benefitType, amount);
         benefits.add(newBenefit);
     }
 }

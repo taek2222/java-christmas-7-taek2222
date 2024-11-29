@@ -1,18 +1,28 @@
 package christmas.domain;
 
+import static christmas.domain.BenefitType.PRESENTATION;
+
 import christmas.domain.dto.BenefitInfoResponse;
 
 public class Benefit {
 
-    private final String name;
+    private final BenefitType type;
     private final int amount;
 
-    public Benefit(String name, int amount) {
-        this.name = name;
+    public Benefit(BenefitType benefitType, int amount) {
+        this.type = benefitType;
         this.amount = amount;
     }
 
+    public boolean isNotPresentation() {
+        return !type.equals(PRESENTATION);
+    }
+
     public BenefitInfoResponse createResponse() {
-        return new BenefitInfoResponse(name, amount);
+        return new BenefitInfoResponse(type.getName(), amount);
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }
