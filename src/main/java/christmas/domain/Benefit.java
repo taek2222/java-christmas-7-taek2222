@@ -9,8 +9,8 @@ public class Benefit {
     private final BenefitType type;
     private final int amount;
 
-    public Benefit(BenefitType benefitType, int amount) {
-        this.type = benefitType;
+    public Benefit(final BenefitType type, final int amount) {
+        this.type = type;
         this.amount = amount;
     }
 
