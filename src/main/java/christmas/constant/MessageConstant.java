@@ -8,9 +8,12 @@ public enum MessageConstant {
     BEFORE_DISCOUNT_AMOUNT_HEADER("<할인 전 총주문 금액>"),
     PRESENTATION_HEADER("<증정 메뉴>"),
     BENEFIT_CONTENTS_HEADER("<혜택 내역>"),
+    BENEFITS_AMOUNT_HEADER("<총혜택 금액>"),
+    AFTER_DISCOUNT_AMOUNT_HEADER("<할인 후 예상 결제 금액>"),
     ORDER_DETAILS("%s %d개"),
     AMOUNT("%s원"),
-    BENEFIT_DETAILS("%s: -%s원"),
+    MINUS_AMOUNT("-" + AMOUNT.get()),
+    BENEFIT_DETAILS("%s: " + MINUS_AMOUNT.get()),
 
     NO_CONTENT("없음"),
 

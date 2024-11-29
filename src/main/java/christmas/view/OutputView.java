@@ -1,10 +1,13 @@
 package christmas.view;
 
+import static christmas.constant.MessageConstant.AFTER_DISCOUNT_AMOUNT_HEADER;
 import static christmas.constant.MessageConstant.AMOUNT;
 import static christmas.constant.MessageConstant.BEFORE_DISCOUNT_AMOUNT_HEADER;
+import static christmas.constant.MessageConstant.BENEFITS_AMOUNT_HEADER;
 import static christmas.constant.MessageConstant.BENEFIT_CONTENTS_HEADER;
 import static christmas.constant.MessageConstant.BENEFIT_DETAILS;
 import static christmas.constant.MessageConstant.EVENT_NOTICE;
+import static christmas.constant.MessageConstant.MINUS_AMOUNT;
 import static christmas.constant.MessageConstant.NEW_LINE;
 import static christmas.constant.MessageConstant.NO_CONTENT;
 import static christmas.constant.MessageConstant.ORDER_DETAILS;
@@ -61,6 +64,30 @@ public class OutputView {
             return;
         }
         responses.forEach(this::printBenefitDetail);
+    }
+
+    public void printTotalBenefitAmount(int amount) {
+        printHeader(BENEFITS_AMOUNT_HEADER);
+
+        if (amount == 0) {
+            System.out.println(NO_CONTENT.get());
+            return;
+        }
+
+        String formattedAmount = PRICE_FORMAT.format(amount);
+        System.out.println(MINUS_AMOUNT.get(formattedAmount));
+    }
+
+    public void printAfterDiscountAmount(int amount) {
+        printHeader(AFTER_DISCOUNT_AMOUNT_HEADER);
+
+        if (amount == 0) {
+            System.out.println(NO_CONTENT.get());
+            return;
+        }
+
+        String formattedAmount = PRICE_FORMAT.format(amount);
+        System.out.println(AMOUNT.get(formattedAmount));
     }
 
     private void printBenefitDetail(BenefitInfoResponse response) {

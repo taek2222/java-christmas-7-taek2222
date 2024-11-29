@@ -14,6 +14,13 @@ public class Benefits {
         this.presentation = presentation;
     }
 
+    public int getTotalAmount() {
+        return benefits.stream()
+                .filter(Benefit::isNotPresentation)
+                .mapToInt(Benefit::getAmount)
+                .sum();
+    }
+
     public OrderInfoResponse getPresentationResponse() {
         if (presentation == null) {
             return null;
